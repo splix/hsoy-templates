@@ -1,0 +1,28 @@
+!!! namespace tests.test1
+
+/ Says hello to the world.
+#hello
+  Hello world!
+
+/ Say hello wrapped into <div class="span5">
+#helloWithTags
+  .span5
+    Hello world!
+
+/
+  Say hello wrapped into <div class="span5">
+  @param name The name of the person.
+#helloWithTagsAndParam
+  .span5
+    Hello {$name}!
+
+/
+  Greets a person using "Hello" by default.
+  @param name The name of the person.
+  @param? greetingWord Optional greeting word to use instead of "Hello".
+#helloWithTagsAndLogic
+  {if not $greetingWord}
+    Hello {$name}!
+  {else}
+    {$greetingWord} {$name}!
+  {/if}

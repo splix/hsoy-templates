@@ -1,0 +1,19 @@
+{namespace tests.test2}
+
+/**
+* Greets a person using "Hello" by default.
+* @param name The name of the person.
+* @param? greetingWord Optional greeting word to use instead of "Hello".
+*/
+{template .x1}
+<h1>
+  A Greeting
+</h1>
+{if not $greetingWord}
+  <div class='default'>
+    Hello {$name}!
+  </div>
+{else}
+  <h2>{$greetingWord} {$name}!</h2>
+{/if}
+{/template}

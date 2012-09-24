@@ -1,0 +1,16 @@
+!!! namespace tests.test2
+
+
+/
+  Greets a person using "Hello" by default.
+  @param name The name of the person.
+  @param? greetingWord Optional greeting word to use instead of "Hello".
+#x1
+  %h1
+    A Greeting
+  {if not $greetingWord}
+    .default
+      Hello {$name}!
+  {else}
+    %h2 {$greetingWord} {$name}!
+  {/if}
