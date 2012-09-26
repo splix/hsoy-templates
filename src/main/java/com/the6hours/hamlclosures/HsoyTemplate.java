@@ -3,9 +3,7 @@ package com.the6hours.hamlclosures;
 import com.cadrlife.jhaml.JHaml;
 import com.cadrlife.jhaml.JHamlParseException;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,6 +15,7 @@ import java.util.regex.Pattern;
 class HsoyTemplate {
 
     private String name;
+    private Map<String, String> attributes = new HashMap<String, String>();
     private List<String> doc = new ArrayList<String>();
     private List<String> body = new ArrayList<String>();
     private Pattern SOY_COMMAND_LINE = Pattern.compile("\\s*\\{([^\\}]+)\\}\\s*$");
@@ -71,6 +70,29 @@ class HsoyTemplate {
             buf.append("* ").append(line.trim()).append('\n');
         }
         buf.append("*/");
+        return buf.toString();
+    }
+
+    public Map<String, String> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(Map<String, String> attributes) {
+        this.attributes = attributes;
+    }
+
+    public String getSoyAttributes() {
+        if (attributes.isEmpty()) {
+            return "";
+        }
+        StringBuilder buf = new StringBuilder();
+        for (Map.Entry<String, String> attr: attributes.entrySet()) {
+            buf.append(attr.getKey())
+                    .append("=\"")
+                    .append(attr.getValue())
+                    .append("\" ");
+        }
+        buf.deleteCharAt(buf.length() - 1);
         return buf.toString();
     }
 }

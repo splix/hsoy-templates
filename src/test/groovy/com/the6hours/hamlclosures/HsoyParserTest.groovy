@@ -66,4 +66,18 @@ class HsoyParserTest extends Specification {
                     "  <h2>{\$greetingWord} {\$name}!</h2>\n" +
                     "{/if}"
     }
+
+    def "file test-template-params.hsoy"() {
+        setup:
+            String hsoy = this.class.classLoader.getResourceAsStream('hamlsoy/test-template-params.hsoy').text
+            HsoyParser parser = new HsoyParser()
+        when:
+            HsoyDocument doc = parser.parse(hsoy)
+        then:
+            doc
+            doc.namespace == 'tests.test1'
+            doc.templates.size() == 1
+            doc.templates[0].name == 'hello'
+            doc.templates[0].attributes == ['autoescape': 'false']
+    }
 }

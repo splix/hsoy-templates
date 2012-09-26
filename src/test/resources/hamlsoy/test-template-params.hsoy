@@ -1,0 +1,5 @@
+!!! namespace tests.test1
+
+/ Says hello to the world.
+#hello{:autoescape=>"false"}
+  Hello world!

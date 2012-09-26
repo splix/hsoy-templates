@@ -35,7 +35,13 @@ class HsoyDocument {
         if (!templates.isEmpty()) {
             for (HsoyTemplate tpl: templates) {
                 buf.append(tpl.getSoyDocs()).append('\n');
-                buf.append("{template .").append(tpl.getName()).append("}\n");
+                buf.append("{template .")
+                        .append(tpl.getName());
+                String templateAttributes = tpl.getSoyAttributes();
+                if (templateAttributes.length() > 0) {
+                    buf.append(' ').append(templateAttributes);
+                }
+                buf.append("}\n");
                 buf.append(tpl.getSoyBody()).append('\n');
                 buf.append("{/template}\n\n");
             }
