@@ -22,11 +22,11 @@
             <artifactId>jhaml</artifactId>
             <version>0.1.4</version>
         </dependency>
-        <!--dependency>
+        <dependency>
             <groupId>com.google.template</groupId>
             <artifactId>soy</artifactId>
             <version>2011-14-10</version>
-        </dependency-->
+        </dependency>
 
         <dependency>
             <groupId>org.spockframework</groupId>
