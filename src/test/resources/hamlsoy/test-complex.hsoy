@@ -1,0 +1,20 @@
+!!! namespace tests.complex
+
+/
+  Complex template
+
+  @param list Some list
+  @param id Id
+  @param description Description
+  @param isSomething
+#complex
+  #xlist.xlist-{$id}{:data-id=>"{$id}"}
+    .header
+      %h1 {$description}
+    {call .listActions data="all" /}
+    .row
+      {foreach $item in $list}
+        {call .itemRender}
+          {param item: $item /}
+        {/call}
+      {/foreach}

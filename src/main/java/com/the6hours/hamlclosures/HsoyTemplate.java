@@ -42,24 +42,33 @@ class HsoyTemplate {
     public String getSoyBody() {
         JHaml jhaml = new JHaml();
         StringBuilder buf = new StringBuilder();
+        List<String> soyCommands = new ArrayList<String>();
         for(String line: body) {
             Matcher m = SOY_COMMAND_LINE.matcher(line);
             if (m.matches()) {
-                line = line.replaceAll("\\{(.+?)\\}", "%soy{:src=>\"$1\"}");
-                //line = line.replaceAll("^(\\s+)\\{", "$1-{");
-                //line = m.replaceFirst("%soy{:src=>\"$1\"}");
+                soyCommands.add(m.group(1));
+                line = line.replaceAll("\\{(.+?)\\}", "%soy{:idx=>\"" + (soyCommands.size() -1) + "\"}");
             }
+            line = line.replaceAll("\\{\\$(\\w+)\\}", "HSOY-PASTE-$1");
             buf.append(line.substring(2)).append('\n');
         }
         String html;
         try {
             html = jhaml.parse(buf.toString());
+            //System.out.println("HTML: " + html);
         } catch (JHamlParseException e) {
             System.out.println(buf);
             throw e;
         }
-        html = html.replaceAll("(?sm)(\\s*)<soy src='(.+?)'>(.*?)\\n\\1</soy>", "{$2}$3");
-        html = html.replaceAll("(?sm)<soy src='(.+?)'></soy>", "{$1}");
+        for (int idx = 0; idx < soyCommands.size(); idx++) {
+            String shouldBe = soyCommands.get(idx).replaceAll("\\$", "\\\\\\$");
+            //System.out.println(shouldBe);
+            html = html.replaceAll("(?sm)(\\s*)<soy idx='" + idx + "'>(.*?)\\n\\1</soy>",
+                    "$1{"+shouldBe+"}$2");
+            html = html.replaceAll("(?sm)<soy idx='" + idx+ "'></soy>",
+                    "{"+shouldBe+"}");
+        }
+        html = html.replaceAll("HSOY-PASTE-(\\w+)", "{\\$$1}");
         return html;
     }
 

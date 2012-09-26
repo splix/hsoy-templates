@@ -1,0 +1,24 @@
+{namespace tests.complex}
+
+/**
+* Complex template
+* @param list Some list
+* @param id Id
+* @param description Description
+* @param isSomething
+*/
+{template .complex}
+<div class='xlist-{$id}' data-id='{$id}' id='xlist'>
+  <div class='header'>
+    <h1>{$description}</h1>
+  </div>
+  {call .listActions data="all" /}
+  <div class='row'>
+    {foreach $item in $list}
+      {call .itemRender}
+        {param item: $item /}
+      {/call}
+    {/foreach}
+  </div>
+</div>
+{/template}
