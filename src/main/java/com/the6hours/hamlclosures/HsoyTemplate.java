@@ -47,7 +47,7 @@ class HsoyTemplate {
             Matcher m = SOY_COMMAND_LINE.matcher(line);
             if (m.matches()) {
                 soyCommands.add(m.group(1));
-                line = line.replaceAll("\\{(.+?)\\}", "%soy{:idx=>\"" + (soyCommands.size() -1) + "\"}");
+                line = line.replaceAll("\\{(.+?)\\}", "%soy-idx" + (soyCommands.size() -1));
             }
             line = line.replaceAll("\\{\\$(\\w+)\\}", "HSOY-PASTE-$1");
             buf.append(line.substring(2)).append('\n');
@@ -63,9 +63,10 @@ class HsoyTemplate {
         for (int idx = 0; idx < soyCommands.size(); idx++) {
             String shouldBe = soyCommands.get(idx).replaceAll("\\$", "\\\\\\$");
             //System.out.println(shouldBe);
-            html = html.replaceAll("(?sm)(\\s*)<soy idx='" + idx + "'>(.*?)\\n\\1</soy>",
+            String tagName = "soy-idx"+idx;
+            html = html.replaceAll("(?sm)(\\s*)<" + tagName + ">(.*?)\\n\\1</"+ tagName +">",
                     "$1{"+shouldBe+"}$2");
-            html = html.replaceAll("(?sm)<soy idx='" + idx+ "'></soy>",
+            html = html.replaceAll("(?sm)<" + tagName+ "></"+tagName+">",
                     "{"+shouldBe+"}");
         }
         html = html.replaceAll("HSOY-PASTE-(\\w+)", "{\\$$1}");

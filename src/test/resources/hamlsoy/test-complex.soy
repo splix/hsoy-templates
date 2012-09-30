@@ -22,3 +22,33 @@
   </div>
 </div>
 {/template}
+
+/**
+* Complex template 2
+* @param obj Object
+*/
+{template .complex2}
+<div class='item span2' data-details='{$obj.details}' data-id='{$obj.id}'>
+  <div class='row'>
+    <img alt='' height='' src='{$obj.image}' />
+  </div>
+  <div class='row'>
+    <h2>
+      <a href='https://short.ly/{$obj.shrt}'>{$obj.name}</a>
+      {if $obj.comment}
+        <div class='comment'>{$obj.comment}</div>
+      {/if}
+    </h2>
+  </div>
+  <div class='row'>
+    <ul class='unstyled'>
+      {foreach $some in $obj.somes}
+        <li>{$some.name}</li>
+      {/foreach}
+      <li>
+        <a class='btn' href='#'>+1</a>
+      </li>
+    </ul>
+  </div>
+</div>
+{/template}

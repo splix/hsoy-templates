@@ -18,3 +18,25 @@
           {param item: $item /}
         {/call}
       {/foreach}
+
+/
+  Complex template 2
+
+  @param obj Object
+#complex2
+  .item.span2{:data-id=>"{$obj.id}", :data-details=>"{$obj.details}"}
+    .row
+      %img{:src=>"{$obj.image}", :alt=>"", :height=>""}
+    .row
+      %h2
+        %a{:href=>"https://short.ly/{$obj.shrt}"} {$obj.name}
+        {if $obj.comment}
+          .comment {$obj.comment}
+        {/if}
+    .row
+      %ul.unstyled
+        {foreach $some in $obj.somes}
+          %li {$some.name}
+        {/foreach}
+        %li
+          %a.btn{:href=>"#"} +1
