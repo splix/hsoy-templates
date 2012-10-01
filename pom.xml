@@ -5,8 +5,34 @@
     <groupId>com.the6hours</groupId>
     <artifactId>haml-closures</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1</version>
     <name>Google Closures with HAML syntax</name>
+
+    <url>https://github.com/splix/haml-closures</url>
+
+    <description>
+        Google Closures with HAML syntax
+    </description>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>git@github.com:splix/haml-closures.git</url>
+        <connection>scm:git:git@github.com:splix/haml-closures.git</connection>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>1</id>
+            <name>Igor Artamonov</name>
+            <email>igor@artamonov.ru</email>
+        </developer>
+    </developers>
 
     <properties>
         <gmaven.version>1.3</gmaven.version>
@@ -50,6 +76,15 @@
     </dependencies>
 
     <build>
+
+        <extensions>
+            <extension>
+                <groupId>org.springframework.build</groupId>
+                <artifactId>aws-maven</artifactId>
+                <version>4.2.0.RELEASE</version>
+            </extension>
+        </extensions>
+
         <plugins>
 
             <plugin>
@@ -107,5 +142,31 @@
             <snapshots><enabled>false</enabled></snapshots>
         </repository>
     </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring</id>
+            <url>http://maven.springframework.org/release</url>
+            <snapshots><enabled>false</enabled></snapshots>
+            <releases><enabled>true</enabled></releases>
+        </pluginRepository>
+        <pluginRepository>
+            <id>ibiblio.mirrors</id>
+            <url>http://mirrors.ibiblio.org/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <distributionManagement>
+        <repository>
+            <id>aws-release</id>
+            <name>AWS Release Repository</name>
+            <url>s3://maven.the6hours.com/release</url>
+        </repository>
+        <snapshotRepository>
+            <id>aws-snapshot</id>
+            <name>AWS Snapshot Repository</name>
+            <url>s3://maven.the6hours.com/snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
