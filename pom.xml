@@ -5,7 +5,7 @@
     <groupId>com.the6hours</groupId>
     <artifactId>haml-closures</artifactId>
     <packaging>jar</packaging>
-    <version>0.1</version>
+    <version>0.2-SNAPSHOT</version>
     <name>Google Closures with HAML syntax</name>
 
     <url>https://github.com/splix/haml-closures</url>
