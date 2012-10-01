@@ -8,7 +8,7 @@ import java.util.List;
  * @author Igor Artamonov (http://igorartamonov.com)
  * @since 15.07.12
  */
-class HsoyDocument {
+public class HsoyDocument {
 
     private String namespace;
     private List<HsoyTemplate> templates = new ArrayList<HsoyTemplate>();
