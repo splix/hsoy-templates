@@ -50,6 +50,34 @@ to
 {/template}
 ```
 
+Maven
+-----
+
+Latest versions: `0.1` for stable version, or `0.2-SNAPSHOT` for development
+
+Maven dependency:
+```xml
+<dependency>
+    <groupId>com.the6hours</groupId>
+    <artifactId>haml-closures</artifactId>
+    <version>0.1</version>
+</dependency>
+```
+
+Also you need to add The 6 Hours Maven repository:
+
+```xml
+<repositories>
+    <repository>
+        <id>the6hours-release</id>
+        <url>http://maven.the6hours.com/release</url>
+        <releases><enabled>true</enabled></releases>
+        <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+</repositories>
+```
+
+Snapshot repo is located at `http://maven.the6hours.com/snapshot`
 
 License
 -------
