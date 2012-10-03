@@ -1,5 +1,5 @@
-HAML Closures
-=============
+Hsoy Templates
+==============
 
 Version of Google Closure Templates with HAML syntax.
 
@@ -53,18 +53,18 @@ to
 Maven
 -----
 
-Latest versions: `0.1` for stable version, or `0.2-SNAPSHOT` for development
+Latest versions: `0.2` for stable version, or `0.3-SNAPSHOT` for development
 
 Maven dependency:
 ```xml
 <dependency>
     <groupId>com.the6hours</groupId>
-    <artifactId>haml-closures</artifactId>
-    <version>0.1</version>
+    <artifactId>hsoy-templates</artifactId>
+    <version>0.2</version>
 </dependency>
 ```
 
-Also you need to add The 6 Hours Maven repository:
+Also you need to add 'The 6 Hours' Maven repository:
 
 ```xml
 <repositories>

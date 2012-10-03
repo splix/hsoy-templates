@@ -3,15 +3,15 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.the6hours</groupId>
-    <artifactId>haml-closures</artifactId>
+    <artifactId>hsoy-templates</artifactId>
     <packaging>jar</packaging>
-    <version>0.2-SNAPSHOT</version>
-    <name>Google Closures with HAML syntax</name>
+    <version>0.2</version>
+    <name>Google Closure Templates with HAML syntax</name>
 
-    <url>https://github.com/splix/haml-closures</url>
+    <url>https://github.com/splix/hsoy-templates</url>
 
     <description>
-        Google Closures with HAML syntax
+        Google Closure Templates with HAML syntax
     </description>
     <licenses>
         <license>
@@ -22,8 +22,8 @@
     </licenses>
 
     <scm>
-        <url>git@github.com:splix/haml-closures.git</url>
-        <connection>scm:git:git@github.com:splix/haml-closures.git</connection>
+        <url>git@github.com:splix/hsoy-templates.git</url>
+        <connection>scm:git:git@github.com:splix/hsoy-templates.git</connection>
     </scm>
 
     <developers>

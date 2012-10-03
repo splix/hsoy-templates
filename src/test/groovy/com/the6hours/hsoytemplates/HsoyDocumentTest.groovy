@@ -1,6 +1,8 @@
-package com.the6hours.hamlclosures
+package com.the6hours.hsoytemplates
 
 import spock.lang.Specification
+import com.the6hours.hsoytemplates.HsoyParser
+import com.the6hours.hsoytemplates.HsoyDocument
 
 /**
  * 

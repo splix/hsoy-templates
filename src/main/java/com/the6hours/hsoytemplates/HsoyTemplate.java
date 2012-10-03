@@ -1,4 +1,4 @@
-package com.the6hours.hamlclosures;
+package com.the6hours.hsoytemplates;
 
 import com.cadrlife.jhaml.JHaml;
 import com.cadrlife.jhaml.JHamlParseException;

@@ -1,4 +1,4 @@
-package com.the6hours.hamlclosures;
+package com.the6hours.hsoytemplates;
 
 /**
  * 
