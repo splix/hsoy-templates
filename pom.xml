@@ -5,7 +5,7 @@
     <groupId>com.the6hours</groupId>
     <artifactId>hsoy-templates</artifactId>
     <packaging>jar</packaging>
-    <version>0.2</version>
+    <version>0.3-SNAPSHOT</version>
     <name>Google Closure Templates with HAML syntax</name>
 
     <url>https://github.com/splix/hsoy-templates</url>
@@ -148,6 +148,12 @@
         <repository>
             <id>github-raymyers</id>
             <url>https://raw.github.com/raymyers/raymyers-mvn-repo/master/releases</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+        <repository>
+            <id>codedance</id>
+            <url>https://github.com/codedance/maven-repository/raw/master</url>
             <releases><enabled>true</enabled></releases>
             <snapshots><enabled>false</enabled></snapshots>
         </repository>
