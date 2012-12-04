@@ -52,3 +52,17 @@
   </div>
 </div>
 {/template}
+
+/**
+* Complex template 3
+* @param id Id
+* @param description Description
+* @param answered
+*/
+{template .complex3}
+<div class='{if $answered}have-answer{else}no-answer{/if} question row' id='quest_{$id}'>
+  <div class='header'>
+    <h1>{$description}</h1>
+  </div>
+</div>
+{/template}

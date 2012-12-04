@@ -40,3 +40,14 @@
         {/foreach}
         %li
           %a.btn{:href=>"#"} +1
+
+/
+  Complex template 3
+
+  @param id Id
+  @param description Description
+  @param answered
+#complex3
+  #quest_{$id}.question.row{:class=>"{if $answered}have-answer{else}no-answer{/if}"}
+    .header
+      %h1 {$description}
