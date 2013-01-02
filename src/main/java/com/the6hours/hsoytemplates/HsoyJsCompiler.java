@@ -11,62 +11,40 @@ import java.util.List;
  * @author Igor Artamonov (http://igorartamonov.com)
  * @since 23.09.12
  */
-public class HsoyJsCompiler {
+public class HsoyJsCompiler extends HsoyBaseCompiler {
 
-    public String compileToString(String input) throws HsoyFormatException, SoySyntaxException {
-        return compileToString(input, "unknown.hsoy");
-    }
+    private boolean shouldProvideRequireSoyNamespaces = false;
+    private boolean shouldGenerateJsdoc = false;
 
-    public String compileToString(String input, String name) throws HsoyFormatException, SoySyntaxException {
-        HsoyParser parser = new HsoyParser();
-        HsoyDocument document = parser.parse(input);
-        String soy = document.getSoy();
-        SoyFileSet.Builder sfs = new SoyFileSet.Builder();
-        sfs.add(soy, name);
-
-        SoyFileSet soyFileSet = sfs.build();
-
+    @Override
+    public String compileToString(SoyFileSet fileSet) throws HsoyFormatException, SoySyntaxException {
         SoyJsSrcOptions jsSrcOptions = new SoyJsSrcOptions();
-        jsSrcOptions.setShouldProvideRequireSoyNamespaces(false);
-        jsSrcOptions.setShouldGenerateJsdoc(false);
-        List<String> compiledSrcs = soyFileSet.compileToJsSrc(jsSrcOptions, null);
-        assert compiledSrcs.size() == 1;
-        return compiledSrcs.get(0);
-    }
-
-    public SoyFileSet build(List<File> files) throws HsoyFormatException, IOException {
-        HsoyParser parser = new HsoyParser();
-
-        SoyFileSet.Builder sfs = new SoyFileSet.Builder();
-        for (File f: files) {
-            try {
-                HsoyDocument document = parser.parse(read(f));
-                sfs.add(document.getSoy(), f.getName());
-            } catch (HsoyFormatException e) {
-                throw new HsoyFormatException(String.format("Invalid format for file %s", f.getName()), e);
-            }
+        jsSrcOptions.setShouldProvideRequireSoyNamespaces(shouldProvideRequireSoyNamespaces);
+        jsSrcOptions.setShouldGenerateJsdoc(shouldGenerateJsdoc);
+        List<String> compiledSrcs = fileSet.compileToJsSrc(jsSrcOptions, null);
+        if (compiledSrcs.size() == 1) {
+            return compiledSrcs.get(0);
         }
-
-        return sfs.build();
-    }
-
-    public SoyFileSet build(String input, String filename) throws HsoyFormatException {
-        HsoyParser parser = new HsoyParser();
-        HsoyDocument document = parser.parse(input);
-
-        SoyFileSet.Builder sfs = new SoyFileSet.Builder();
-        sfs.add(document.getSoy(), filename);
-        return sfs.build();
-    }
-
-    private String read(File file) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-        String line;
-        StringBuilder buf = new StringBuilder((int)file.length());
-        while ((line = reader.readLine()) != null) {
-            buf.append(line).append('\n');
+        StringBuilder buf = new StringBuilder();
+        for (String js: compiledSrcs) {
+            buf.append(js).append('\n');
         }
         return buf.toString();
     }
 
+    public boolean isShouldProvideRequireSoyNamespaces() {
+        return shouldProvideRequireSoyNamespaces;
+    }
+
+    public void setShouldProvideRequireSoyNamespaces(boolean shouldProvideRequireSoyNamespaces) {
+        this.shouldProvideRequireSoyNamespaces = shouldProvideRequireSoyNamespaces;
+    }
+
+    public boolean isShouldGenerateJsdoc() {
+        return shouldGenerateJsdoc;
+    }
+
+    public void setShouldGenerateJsdoc(boolean shouldGenerateJsdoc) {
+        this.shouldGenerateJsdoc = shouldGenerateJsdoc;
+    }
 }
