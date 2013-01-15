@@ -1,7 +1,19 @@
 Hsoy Templates
 ==============
 
-Version of Google Closure Templates with HAML syntax.
+Hsoy Templates is a client- and server- side templating system for web and Java.
+
+Based on Google Closure Templates with adding HAML syntax.
+
+Features
+--------
+
+  * One template
+  * HAML syntax (Haml accelerates and simplifies template creation - see http://haml.info/)
+  * Fast
+    * compiled into Java (can be used by any JVM based language)
+    * compiled into JavaScript
+  * Based on Google Closure Templates library
 
 How it works
 ------------
@@ -53,14 +65,14 @@ to
 Maven
 -----
 
-Latest versions: `0.2` for stable version, or `0.3-SNAPSHOT` for development
+Latest versions: `0.3` for stable version, or `0.4-SNAPSHOT` for development
 
 Maven dependency:
 ```xml
 <dependency>
     <groupId>com.the6hours</groupId>
     <artifactId>hsoy-templates</artifactId>
-    <version>0.2</version>
+    <version>0.3</version>
 </dependency>
 ```
 

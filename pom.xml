@@ -5,7 +5,7 @@
     <groupId>com.the6hours</groupId>
     <artifactId>hsoy-templates</artifactId>
     <packaging>jar</packaging>
-    <version>0.3-SNAPSHOT</version>
+    <version>0.3</version>
     <name>Google Closure Templates with HAML syntax</name>
 
     <url>https://github.com/splix/hsoy-templates</url>
