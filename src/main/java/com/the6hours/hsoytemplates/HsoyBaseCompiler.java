@@ -4,6 +4,7 @@ import com.google.template.soy.SoyFileSet;
 import com.google.template.soy.base.SoySyntaxException;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -30,6 +31,10 @@ public abstract class HsoyBaseCompiler {
     }
 
     public abstract String compileToString(SoyFileSet fileSet) throws HsoyFormatException, SoySyntaxException;
+
+    public SoyFileSet build(File file) throws HsoyFormatException, IOException {
+        return build(Arrays.asList(file));
+    }
 
     public SoyFileSet build(List<File> files) throws HsoyFormatException, IOException {
         HsoyParser parser = new HsoyParser();
