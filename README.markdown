@@ -5,6 +5,8 @@ Hsoy Templates is a client- and server- side templating system for web and Java.
 
 Based on Google Closure Templates with adding HAML syntax.
 
+Documentation: http://splix.github.io/hsoy-templates/
+
 Features
 --------
 
@@ -15,51 +17,20 @@ Features
     * compiled into JavaScript
   * Based on Google Closure Templates library
 
-How it works
-------------
-
-Converts from
+Example
+-------
 
 ```haml
-!!! namespace tests.test2
+!!! namespace tests
 
 /
-  Greets a person using "Hello" by default.
+  Greets a person using "Hello ...!"
   @param name The name of the person.
-  @param? greetingWord Optional greeting word to use instead of "Hello".
-#x1
+#greeting
   %h1
     A Greeting
-  {if not $greetingWord}
-    .default
-      Hello {$name}!
-  {else}
-    %h2 {$greetingWord} {$name}!
-  {/if}
-```
-
-to
-
-```
-{namespace tests.test2}
-
-/**
-* Greets a person using "Hello" by default.
-* @param name The name of the person.
-* @param? greetingWord Optional greeting word to use instead of "Hello".
-*/
-{template .x1}
-<h1>
-  A Greeting
-</h1>
-{if not $greetingWord}
-  <div class='default'>
+  %h2
     Hello {$name}!
-  </div>
-{else}
-  <h2>{$greetingWord} {$name}!</h2>
-{/if}
-{/template}
 ```
 
 Maven
@@ -90,6 +61,10 @@ Also you need to add 'The 6 Hours' Maven repository:
 ```
 
 Snapshot repo is located at `http://maven.the6hours.com/snapshot`
+
+Author
+------
+[Igor Artamonov](http://igorartamonov.com), [The 6 Hours](http://the6hours.com)
 
 License
 -------
