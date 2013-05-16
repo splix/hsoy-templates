@@ -1,0 +1,8 @@
+!!! namespace test.brackets
+
+/
+  Use TeX
+#tex
+  %p
+    Example: <code class="tex2jax_ignore">$f\{lb}x,y\{rb}=(x^2+y^2)^2$</code> going to be
+    rendered as $f\{lb}x,y\{rb}=(x^2+y^2)^2$

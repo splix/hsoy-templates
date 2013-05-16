@@ -46,4 +46,16 @@ class HsoyDocumentTest extends Specification{
         then:
             act == soy
     }
+
+    def "file test-brackets.hsoy"() {
+        setup:
+            String hsoy = this.class.classLoader.getResourceAsStream('hamlsoy/test-brackets.hsoy').text
+            String soy = this.class.classLoader.getResourceAsStream('hamlsoy/test-brackets.soy').text
+            HsoyParser parser = new HsoyParser()
+        when:
+            HsoyDocument doc = parser.parse(hsoy)
+            String act = doc.soy
+        then:
+            act == soy
+    }
 }
