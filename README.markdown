@@ -62,6 +62,13 @@ Also you need to add 'The 6 Hours' Maven repository:
 
 Snapshot repo is located at `http://maven.the6hours.com/snapshot`
 
+Modules
+-------
+
+  * Hsoy Templates Core - https://github.com/splix/hsoy-templates
+  * Maven Plugin - https://github.com/splix/maven-hsoy-templates
+  * Grails Plugin - https://github.com/splix/grails-hsoy-templates
+
 Author
 ------
 [Igor Artamonov](http://igorartamonov.com), [The 6 Hours](http://the6hours.com)
